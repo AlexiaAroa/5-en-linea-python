@@ -66,12 +66,11 @@ def juego_mostrar(juego):
 
     for i in range(len(grilla)):
         for j in range(len(grilla[i])):
-            if grilla[i][j] == CRUZ:
-                x, y = obtener_coordenadas_pixel(j, i)
-                dibujar_cruz(x, y)
+            x, y = obtener_coordenadas_pixel(j, i)
 
-            if grilla[i][j] == CIRCULO:
-                x, y = obtener_coordenadas_pixel(j, i)
+            if grilla[i][j] == CRUZ:
+                dibujar_cruz(x, y)
+            elif grilla[i][j] == CIRCULO:    
                 dibujar_circulo(x, y)
 
 def main():

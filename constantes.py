@@ -7,7 +7,7 @@ DISTANCIA_CELDA = TAMANIO_CELDA // 5 # Distancia de los símbolos ('X', 'O') en 
 
 
 
-INICIO_GRILLA = TAMANIO_CELDA # Pixel en el que inicia la grilla
+INICIO_GRILLA = 50 # Pixel en el que inicia la grilla
 
 ALTURA_PIXELES_GRILLA = TAMANIO_CELDA * ALTO_GRILLA # Altura de la grilla en píxeles
 ANCHO_PIXELES_GRILLA = TAMANIO_CELDA * ANCHO_GRILLA # Ancho de la grilla en píxeles
