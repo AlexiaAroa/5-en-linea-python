@@ -1,20 +1,12 @@
 import gamelib
 from constantes import *
 
-# TODO: Hay cosas que funcionan solo si TAMANIO_CELDA == INICIO CELDA!
-
 def juego_crear():
     """Inicializar el estado del juego: devuelve una grilla vacía y el turno del jugador."""
-    return [[VACIO for i in range(ANCHO_GRILLA)] for j in range(ALTO_GRILLA)], CIRCULO
+    return [[VACIO for _ in range(ANCHO_GRILLA)] for _ in range(ALTO_GRILLA)], CIRCULO
 
 def obtener_coordenadas_matriz(x, y):
     """Recibe coordenadas en píxeles y devuelve coordenadas adaptadas a la matriz."""
-    # columna, fila = -1, -1
-
-    # if 1 <= x <= ANCHO_VENTANA - 1 and INICIO_GRILLA + 1 <= y <= FINAL_GRILLA - 1:
-    #     if x % TAMANIO_CELDA != 0 and y % TAMANIO_CELDA != 0:
-    #         columna, fila = x // TAMANIO_CELDA, (y // TAMANIO_CELDA) - 1
-    # columna, fila = x // TAMANIO_CELDA, (y // TAMANIO_CELDA) - 1
     columna, fila = x // TAMANIO_CELDA, (y - INICIO_GRILLA) // TAMANIO_CELDA
     return columna, fila
 
@@ -24,14 +16,12 @@ def obtener_coordenadas_pixel(columa, fila):
 
 def actualizar_turno(jugador):
     """Actualiza el turno del jugador."""
-    if jugador == CIRCULO:
-        return CRUZ
-    return CIRCULO
+    return CRUZ if jugador == CIRCULO else CIRCULO
 
 def movimiento_es_valido(juego, x, y):
     '''Devuelve True si la posición donde se hizo click es una celda vacía de la grilla.'''
     columna, fila = obtener_coordenadas_matriz(x, y)
-    return x % TAMANIO_CELDA != 0 and y % TAMANIO_CELDA != 0 and 0 <= columna <= 9 and 0 <= fila <= 9 and juego[fila][columna] == VACIO
+    return x % TAMANIO_CELDA != 0 and y % TAMANIO_CELDA != 0 and 0 <= columna <= (ANCHO_GRILLA - 1) and 0 <= fila <= (ALTO_GRILLA - 1) and juego[fila][columna] == VACIO
 
 def juego_actualizar(juego, x, y):
     """Actualizar el estado del juego

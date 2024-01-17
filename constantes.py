@@ -1,12 +1,9 @@
 ALTO_GRILLA = 10 # Cantidad de celdas de alto que hay en la grilla 
-ANCHO_GRILLA = 10 # cantidad de celdas de ancho que hay en la grilla
+ANCHO_GRILLA = 15 # cantidad de celdas de ancho que hay en la grilla
 
 TAMANIO_CELDA = 30 # Tamaño de la celda en píxeles
 
-
-
-# TODO: Yo recomendaría hacer esta constante en función a TAMANIO_CELDA, para que al cambiarla también las X y O escalen!
-DISTANCIA_CELDA = 7 # Distancia de los símbolos ('X', 'O') en píxeles respecto de la celda
+DISTANCIA_CELDA = TAMANIO_CELDA // 5 # Distancia de los símbolos ('X', 'O') en píxeles respecto de la celda
 
 
 
