@@ -9,9 +9,9 @@ def obtener_coordenadas_matriz(x, y):
     columna, fila = x // TAMANIO_CELDA, (y - INICIO_GRILLA) // TAMANIO_CELDA
     return columna, fila
 
-def obtener_coordenadas_pixel(columa, fila):
+def obtener_coordenadas_pixel(columna, fila):
     """Recibe coordenadas de la matriz y devuelve coordenadas adaptadas en píxeles."""
-    return columa * TAMANIO_CELDA, fila * TAMANIO_CELDA + INICIO_GRILLA
+    return columna * TAMANIO_CELDA, fila * TAMANIO_CELDA + INICIO_GRILLA
 
 def actualizar_turno(jugador):
     """Actualiza el turno del jugador."""
@@ -20,7 +20,12 @@ def actualizar_turno(jugador):
 def movimiento_es_valido(juego, x, y):
     '''Devuelve True si la posición donde se hizo click es una celda vacía de la grilla.'''
     columna, fila = obtener_coordenadas_matriz(x, y)
-    return x % TAMANIO_CELDA != 0 and y % TAMANIO_CELDA != 0 and 0 <= columna <= (ANCHO_GRILLA - 1) and 0 <= fila <= (ALTO_GRILLA - 1) and juego[fila][columna] == VACIO
+    toca_linea_vertical = x % TAMANIO_CELDA == 0
+    toca_linea_horizontal = (y - INICIO_GRILLA) % TAMANIO_CELDA == 0
+    return not toca_linea_vertical and not toca_linea_horizontal and esta_dentro_de_la_grilla(fila, columna) and juego[fila][columna] == VACIO
+
+def esta_dentro_de_la_grilla(fila, columna):
+    return 0 <= columna < ANCHO_GRILLA and 0 <= fila < ALTO_GRILLA
 
 def juego_actualizar(juego, x, y):
     """Actualizar el estado del juego
